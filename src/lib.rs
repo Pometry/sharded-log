@@ -161,6 +161,7 @@ impl Config {
 /// Allows batches of bytes to be written
 /// with low contention, and read-back
 /// in a linearized order.
+#[derive(Debug)]
 pub struct ShardedLog {
     shards: Arc<[Shard]>,
     idx: usize,
@@ -233,6 +234,7 @@ impl Clone for ShardedLog {
     }
 }
 
+#[derive(Debug)]
 struct Shard {
     file_mu: Mutex<BufWriter<File>>,
     dirty: AtomicBool,
